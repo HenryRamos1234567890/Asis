@@ -6,6 +6,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 @Entity
 @Table(name = "docentes")
 public class Docente {
@@ -33,7 +37,23 @@ public class Docente {
     @Nullable
     private String escuela;
 
-    // Getters y Setters
+    @ManyToMany
+    @JoinTable(
+            name = "docentes_grupos",
+            joinColumns = @JoinColumn(name = "docente_id"),
+            inverseJoinColumns = @JoinColumn(name = "grupo_id")
+    )
+
+    private Set<Grupo> grupos = new HashSet<>();
+
+    public Set<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(Set<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+// Getters y Setters
 
     public Integer getId() {
         return id;

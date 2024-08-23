@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Docente-Grupo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div layout:fragment="content">
+        <h1 class="mb-4">Crear Nuevo Docente-Grupo</h1>
+
+        <form th:action="@{/docenteGrupos/save}" th:object="${docenteGrupo}" method="post">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="docente" class="form-label">Docente</label>
+                        <select class="form-control" name="docenteId"   id="docente" required>
+                            <option th:each="docente : ${docentes}" th:value="${docente.id}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="grupo" class="form-label">Grupo</label>
+                        <select class="form-control" name="grupoId"  id="grupo" required>
+                            <option th:each="grupo : ${grupos}" th:value="${grupo.id}" th:text="${grupo.nombre}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="anio" class="form-label">Año</label>
+                        <input type="number" class="form-control" th:field="*{anio}" id="anio" placeholder="Escriba el año" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="ciclo" class="form-label">Ciclo</label>
+                        <input type="number" class="form-control" th:field="*{ciclo}" id="ciclo" placeholder="Escriba el ciclo" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-start" style="gap: 2rem;">
+                <button type="submit" class="btn btn-primary">Guardar</button> |
+                <a th:href="@{/docenteGrupos}" class="btn btn-secondary">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

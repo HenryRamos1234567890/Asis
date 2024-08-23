@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Estudiante-Grupo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Detalles del Estudiante-Grupo</h1>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">ID</dt>
+            <dd class="col-sm-10" th:text="${estudianteGrupo.id}"></dd>
+
+            <dt class="col-sm-2">Estudiante</dt>
+            <dd class="col-sm-10" th:text="${estudianteGrupo.estudiante.nombre}"></dd>
+
+            <dt class="col-sm-2">Grupo</dt>
+            <dd class="col-sm-10" th:text="${estudianteGrupo.grupo.nombre}"></dd>
+        </dl>
+
+        <a th:href="@{/estudianteGrupos/edit/{id}(id=${estudianteGrupo.id})}" class="btn btn-outline-info">Editar</a>
+        <a th:href="@{/estudianteGrupos}" class="btn btn-outline-secondary">Regresar</a>
+    </div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Estudiante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Estudiante</h1>
+
+    <form th:action="@{/Estudiantes/save}" th:object="${estudiante}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escriba el nombre del estudiante" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="pin" class="form-label">PIN</label>
+                    <input type="text" class="form-control" th:field="*{pin}" id="pin" placeholder="Escriba el PIN del estudiante" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Escriba el email del estudiante" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start" style="gap: 2rem;">
+            <button type="submit" class="btn btn-primary">Guardar cambios</button> |
+            <a th:href="@{/Estudiantes}" class="btn btn-secondary">Regresar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
